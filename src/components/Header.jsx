@@ -28,25 +28,25 @@ const Header = (props) => {
             </NavList>
             <NavList>
               <a>
-                <img src="/public/images/nav-network.svg" alt="" />
+                <img src="/images/nav-network.svg" alt="" />
                 <span>My Network</span>
               </a>
             </NavList>
             <NavList>
               <a>
-                <img src="/public/images/nav-jobs.svg" alt="" />
+                <img src="/images/nav-jobs.svg" alt="" />
                 <span>Jobs</span>
               </a>
             </NavList>
             <NavList>
               <a>
-                <img src="/public/images/nav-messaging.svg" alt="" />
+                <img src="/images/nav-messaging.svg" alt="" />
                 <span>Messaging</span>
               </a>
             </NavList>
             <NavList>
               <a>
-                <img src="/public/images/nav-notifications.svg" alt="" />
+                <img src="/images/nav-notifications.svg" alt="" />
                 <span>Notification</span>
               </a>
             </NavList>
@@ -207,7 +207,7 @@ const SignOut = styled.div`
   transition-duration: 167ms;
   text-align: center;
   display: none;
-`; 
+`;
 const User = styled(NavList)`
   a > svg {
     width: 24px;
