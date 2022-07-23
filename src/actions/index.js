@@ -1,11 +1,18 @@
 import { provider, auth } from "../firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithRedirect } from "firebase/auth";
+import { SET_USER } from "./actionType";
+
+export const setUser = (payload) => {
+  type: SET_USER;
+  user: payload;
+};
 
 export function signInAPI() {
   return (dispatch) => {
-    signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)
       .then((payload) => {
-        console.log(payload);
+        dispatch(setUser(payload.user));
+        // console.log(payload);
       })
       .catch((err) => alert(err.message));
   };
