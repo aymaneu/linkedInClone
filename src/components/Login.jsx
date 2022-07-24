@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { signInAPI } from "../actions";
 import { Navigate } from "react-router-dom";
+import { signInAPI } from "../firebase";
 const Login = (props) => {
   return (
     <div>

@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { setUser } from "./actions";
 const firebaseConfig = {
   apiKey: "AIzaSyB114BVUdkSNBK6qlkqsBFo7cjRNK-IE5U",
   authDomain: "linkedin-clone-32ce8.firebaseapp.com",
@@ -17,5 +18,17 @@ const db = getFirestore();
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const storage = getStorage();
+
+export function signInAPI() {
+  return (dispatch) => {
+    signInWithPopup(auth, provider)
+      .then((payload) => {
+        dispatch(setUser(payload.user));
+        console.log(payload.user);
+      })
+      .catch((err) => alert(err.message));
+  };
+}
+
 export { auth, provider, storage };
 export default db;
