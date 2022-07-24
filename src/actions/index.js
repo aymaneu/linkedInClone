@@ -1,6 +1,5 @@
 import { provider, auth } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
-// import { signInWithRedirect } from "firebase/auth";
 import { SET_USER } from "./actionType";
 
 export const setUser = (payload) => {

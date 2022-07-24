@@ -1,7 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { setUser } from "./actions";
 const firebaseConfig = {
   apiKey: "AIzaSyB114BVUdkSNBK6qlkqsBFo7cjRNK-IE5U",
@@ -29,6 +35,26 @@ export function signInAPI() {
       .catch((err) => alert(err.message));
   };
 }
+export function getUserAuth() {
+  return (dispatch) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setUser(user));
+      }
+    });
+  };
+}
 
+export function signOutAPI() {
+  return (dispatch) => {
+    signOut(auth)
+      .then(() => {
+        dispatch(setUser(null));
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+}
 export { auth, provider, storage };
 export default db;
